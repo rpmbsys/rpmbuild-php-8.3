@@ -1,0 +1,24 @@
+services:
+  rocky9run:
+    build:
+      context: .
+      dockerfile: Dockerfile.RL9
+      args:
+        rocky: $RL9
+    image: "aursu/php83build:${RL9TAG}-runtime"
+  rocky9devbase:
+    build:
+      context: .
+      dockerfile: Dockerfile.RL9
+      args:
+        image: node22dev
+        rocky: $RL9
+    image: "aursu/php83build:${RL9TAG}-devbase"
+  rocky9dev2base:
+    build:
+      context: .
+      dockerfile: Dockerfile.RL9
+      args:
+        image: node20dev
+        rocky: $RL9
+    image: "aursu/php83build:${RL9TAG}-dev2base"
