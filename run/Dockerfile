@@ -1,21 +1,26 @@
 ARG rocky=10.0.20250606
 ARG image=web
-FROM aursu/rockylinux:${rocky}-${image}
+FROM ghcr.io/aursu/rockylinux:${rocky}-${image}
+
+LABEL org.opencontainers.image.source=https://github.com/rpmbsys/rpmbuild-php-8.3
 
 COPY system/etc/yum.repos.d/bintray-custom-rocky.repo /etc/yum.repos.d/bintray-custom.repo
 
 RUN microdnf -y --enablerepo=crb --enablerepo=bintray-custom --enablerepo=bintray-phpcustom install \
-        php-bcmath \
-        php-cli \
-        php-fpm \
-        php-opcache \
+        ImageMagick-libs \
+        php-bcmath-8.3.23 \
+        php-cli-8.3.23 \
+        php-fpm-8.3.23 \
+        php-opcache-8.3.23 \
         php-pecl-apcu \
         php-pecl-geoip \
-        php-pecl-imagick \
         php-pecl-memcached \
-        php-pecl-redis5 \
-        php-sodium \
-        php-xml \
+        php-pecl-redis6 \
+        php-sodium-8.3.23 \
+        php-xml-8.3.23 \
+        tzdata \
+    && microdnf -y --disablerepo=epel --enablerepo=bintray-phpcustom install \
+        php-pecl-imagick \
     && microdnf clean all && rm -rf /var/cache/dnf /var/lib/rpm/__db*
 
 # php-fpm configuration
