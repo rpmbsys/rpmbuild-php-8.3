@@ -147,7 +147,7 @@
 
 Summary: PHP scripting language for creating dynamic web sites
 Name: %{php_main}
-Version: 8.3.27
+Version: 8.3.30
 Release: %{rpmrel}%{?dist}
 
 # All files licensed under PHP version 3.01, except
@@ -1269,7 +1269,7 @@ install -D -m 644 %{SOURCE12} $RPM_BUILD_ROOT%{_sysconfdir}/systemd/system/nginx
 
 TESTCMD="$RPM_BUILD_ROOT%{_bindir}/%{bin_cli} --no-php-ini"
 # Ensure all provided extensions are really there
-for mod in core date filter hash libxml openssl pcre reflection session spl standard zlib
+for mod in core date filter hash libxml openssl pcre random reflection session spl standard zlib
 do
      $TESTCMD --modules | grep -qi $mod
 done
@@ -1563,6 +1563,9 @@ exit 0
 %endif
 
 %changelog
+* Wed Jan 14 2026 Remi Collet <remi@remirepo.net> - 8.3.30-1
+- Update to 8.3.30 - http://www.php.net/releases/8_3_30.php
+
 * Wed Oct 22 2025 Remi Collet <remi@remirepo.net> - 8.3.27-1
 - Update to 8.3.27 - http://www.php.net/releases/8_3_27.php
 
