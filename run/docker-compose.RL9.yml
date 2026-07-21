@@ -16,6 +16,6 @@ services:
     build:
       context: .
       args:
-        image: node20dev
+        image: node24dev
         rocky: $RL9
     image: "ghcr.io/rpmbsys/php83build:${RL9TAG}-dev2base"
